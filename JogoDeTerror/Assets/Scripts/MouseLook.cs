@@ -6,7 +6,7 @@ public class MouseLook : MonoBehaviour
 {
     [Range(0.01f,10f)]public float mouseSensivity = 2f;
 
-    public Transform pointTransform;
+    public GameObject pointTransform;
     public Camera mainCamera;
     public Transform playerbody;
     public LayerMask layerHit;
@@ -15,8 +15,11 @@ public class MouseLook : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Instantiate(pointTransform,transform.position,Quaternion.identity);
+
         mainCamera = Camera.main;
         Cursor.lockState = CursorLockMode.Locked;
+
     }
 
     // Update is called once per frame
@@ -51,7 +54,7 @@ public class MouseLook : MonoBehaviour
 
             Debug.DrawLine(cameraray.origin, pointToLook, Color.blue);
 
-            pointTransform.localPosition = pointToLook;
+            pointTransform.transform.localPosition = pointToLook;
 
 
         }
