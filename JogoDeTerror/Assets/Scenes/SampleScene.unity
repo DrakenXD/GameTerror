@@ -123,36 +123,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &37107904
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 37107905}
-  m_Layer: 0
-  m_Name: Sphere
-  m_TagString: Untagged
-  m_Icon: {fileID: -5487077368411116049, guid: 0000000000000000d000000000000000, type: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &37107905
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 37107904}
-  m_LocalRotation: {x: 7.418065e-10, y: -0, z: 8.229736e-13, w: 1}
-  m_LocalPosition: {x: -2.61, y: -3.95, z: -12.579999}
-  m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 6
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &86340164
 GameObject:
   m_ObjectHideFlags: 0
@@ -1529,7 +1499,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mouseSensivity: 2
-  pointTransform: {fileID: 37107905}
+  pointTransform: {fileID: 1443274762316358740, guid: 395c6f7dc4ed9c24b958fa74548dd0c8, type: 3}
+  multiAim: {fileID: 1987411226}
   mainCamera: {fileID: 1687258584}
   playerbody: {fileID: 1554413735788272914}
   layerHit:
@@ -1931,7 +1902,7 @@ MonoBehaviour:
     m_SourceObjects:
       m_Length: 1
       m_Item0:
-        transform: {fileID: 37107905}
+        transform: {fileID: 1443274762316358740, guid: 395c6f7dc4ed9c24b958fa74548dd0c8, type: 3}
         weight: 1
       m_Item1:
         transform: {fileID: 0}
@@ -2253,6 +2224,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2019867015, guid: 880bd74a33af29c4384d999677320654, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 455443360741807318, guid: 880bd74a33af29c4384d999677320654, type: 3}
       propertyPath: m_Name
       value: Enemy

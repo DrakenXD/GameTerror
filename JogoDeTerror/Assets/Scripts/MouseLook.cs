@@ -1,12 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Animations.Rigging;
 
 public class MouseLook : MonoBehaviour
 {
     [Range(0.01f,10f)]public float mouseSensivity = 2f;
 
-    public GameObject pointTransform;
+    public Transform pointTransform;
+    public MultiAimConstraint multiAim;
     public Camera mainCamera;
     public Transform playerbody;
     public LayerMask layerHit;
@@ -17,6 +19,7 @@ public class MouseLook : MonoBehaviour
     {
         Instantiate(pointTransform,transform.position,Quaternion.identity);
 
+        multiAim.data.worldUpObject=pointTransform;
         mainCamera = Camera.main;
         Cursor.lockState = CursorLockMode.Locked;
 
@@ -54,7 +57,7 @@ public class MouseLook : MonoBehaviour
 
             Debug.DrawLine(cameraray.origin, pointToLook, Color.blue);
 
-            pointTransform.transform.localPosition = pointToLook;
+            pointTransform.localPosition = pointToLook;
 
 
         }
