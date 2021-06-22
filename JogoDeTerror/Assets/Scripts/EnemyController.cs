@@ -18,6 +18,7 @@ public class EnemyController : MonoBehaviour
 
     private NavMeshAgent AI;
     private Transform alvo;
+    private RaycastHit hit;
     private EnemyStats stats;
     // Start is called before the first frame update
     void Start()
@@ -38,11 +39,17 @@ public class EnemyController : MonoBehaviour
 
         DistanciaDoPonto = Vector3.Distance(pontoDeCaminho[AIpontoAtual].position, transform.position);
 
+       
+
         for (int i = 0; i < LinhadeVisao.Length; i++) 
         {
-            if (Physics.Raycast(LinhadeVisao[i].position, LinhadeVisao[i].forward, out RaycastHit hit, 1000) && DistanciaDoAlvo < DistanciaDePercepcao)
+           
+
+            Debug.DrawLine(LinhadeVisao[i].position, hit.point, Color.red);
+
+            if (Physics.Raycast(LinhadeVisao[i].position, LinhadeVisao[i].forward,out hit, 1000) && DistanciaDoAlvo < DistanciaDePercepcao)
             {
-                Debug.DrawLine(LinhadeVisao[i].position, hit.point, Color.red);
+                
 
                 if (hit.collider.gameObject.CompareTag("Player"))
                 {
@@ -76,14 +83,18 @@ public class EnemyController : MonoBehaviour
        
 
         //COMANDO PARA PASSEAR
-        if (DistanciaDoPonto <= 2)
+        if (DistanciaDoPonto <= 2 )
         {
             if (CronometroDeTempoParado >= MaxTempoParado)
             {
                 AIpontoAtual = Random.Range(0, pontoDeCaminho.Length);
                 CronometroDeTempoParado = 0;
             }
-            else CronometroDeTempoParado += Time.deltaTime;
+            else
+            {
+                Olhar();
+                CronometroDeTempoParado += Time.deltaTime;
+            }
 
             Passear();
         }
@@ -116,6 +127,7 @@ public class EnemyController : MonoBehaviour
         }
 
     }
+    
     void Olhar()
     {
         AI.speed = 0;
