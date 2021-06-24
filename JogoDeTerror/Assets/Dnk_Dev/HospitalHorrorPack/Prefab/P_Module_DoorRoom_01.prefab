@@ -9,12 +9,12 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4875963943707148}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: P_Module_DoorRoom_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &4875963943707148
 Transform:
@@ -48,12 +48,12 @@ GameObject:
   - component: {fileID: 33137768789976200}
   - component: {fileID: 23976194534344452}
   - component: {fileID: 64994613017684252}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Wall_Door_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 65
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &4167102473293316
 Transform:
@@ -144,12 +144,12 @@ GameObject:
   - component: {fileID: 33027631312851748}
   - component: {fileID: 23303817259995970}
   - component: {fileID: 64042884759882098}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Walli
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 65
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &4317870871457756
 Transform:
@@ -240,12 +240,12 @@ GameObject:
   - component: {fileID: 33717862896628736}
   - component: {fileID: 23973179247526294}
   - component: {fileID: 64507456015070856}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Tile02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 65
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &4790198537572698
 Transform:
@@ -336,12 +336,12 @@ GameObject:
   - component: {fileID: 33197930151911118}
   - component: {fileID: 23092314172311594}
   - component: {fileID: 64414033173331330}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Door_01_Base
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 65
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &4615116250349166
 Transform:
@@ -432,12 +432,12 @@ GameObject:
   - component: {fileID: 33233398950302084}
   - component: {fileID: 23632452755515346}
   - component: {fileID: 64814958180294896}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Ceiling
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 65
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &4669810235540728
 Transform:
@@ -528,12 +528,12 @@ GameObject:
   - component: {fileID: 33014782482796824}
   - component: {fileID: 23134079323496578}
   - component: {fileID: 64807347660176102}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Tile01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 65
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &4510286928174692
 Transform:

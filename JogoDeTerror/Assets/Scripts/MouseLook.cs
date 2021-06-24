@@ -50,7 +50,7 @@ public class MouseLook : MonoBehaviour
 
 
 
-        if (Physics.Raycast(cameraray, out RaycastHit raycast, Mathf.Infinity, layerHit))
+        if (Physics.Raycast(cameraray, out RaycastHit raycast, Mathf.Infinity))
         {
 
             Vector3 pointToLook = cameraray.GetPoint(raycast.distance);

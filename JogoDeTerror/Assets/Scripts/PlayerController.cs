@@ -12,12 +12,18 @@ public class PlayerController : MonoBehaviour
     private Vector3 velocity;
 
     [Header("          FlashLight")]
-    [SerializeField] private GameObject Light;
+
+    [SerializeField] private Light FlashLight;
     [SerializeField] private Image barlight;
     [SerializeField] private bool On;
     [SerializeField] private bool Usable;
+    private bool reload;
     [SerializeField] private float Time_OnFlashLight;
     [SerializeField] private float T_OnFlashLight;
+
+    [Header("          SFX")]
+    [SerializeField] private AudioSource SFX_TurnOnLight;
+    [SerializeField] private AudioSource[] SFX_Walking;
 
     private void Awake()
     {
@@ -105,6 +111,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    #region FlashLight
     private void OnFlashLight()
     {
         if (On)
@@ -118,7 +125,7 @@ public class PlayerController : MonoBehaviour
                 {
                     Usable = false;
                     //animação de luz piscando
-                    StartCoroutine("Piscar");
+                    StartCoroutine("animFlashLight");
                 }
 
                 //usando a bateria
@@ -130,27 +137,42 @@ public class PlayerController : MonoBehaviour
             {
                 //desliga tudo quando estiver sem bateria
                 On = false;
-                Light.SetActive(false);
+                FlashLight.enabled=(false);
             }
 
         }
         else
         {
+          
             //verificar se tempo da bateria está descarregada
-            if (T_OnFlashLight < Time_OnFlashLight)
+            if (reload)
             {
-                //carregando a bateria
-                T_OnFlashLight += Time.deltaTime;
+                if (T_OnFlashLight < Time_OnFlashLight)
+                {
+                    //carregando a bateria
+                    T_OnFlashLight += Time.deltaTime;
 
-                UpdateBar(barlight, T_OnFlashLight, Time_OnFlashLight);
+                    UpdateBar(barlight, T_OnFlashLight, Time_OnFlashLight);
 
-                Light.SetActive(false);
+                    FlashLight.enabled = (false);
 
-                //verificar se a carga é maior ou igual 30% da bateria
-                if (T_OnFlashLight >= Time_OnFlashLight / 3) Usable = true;
+                    //verificar se a carga é maior ou igual 30% da bateria
+                    if (T_OnFlashLight >= Time_OnFlashLight / 3) Usable = true;
 
+                }
+                else if (T_OnFlashLight >= Time_OnFlashLight)
+                {
+                    reload = false;
+                    T_OnFlashLight = Time_OnFlashLight;
+                }
+                   
             }
-            else if(T_OnFlashLight >= Time_OnFlashLight) T_OnFlashLight = Time_OnFlashLight;
+            else
+            {
+                FlashLight.enabled = (false);
+                StartCoroutine("TimeToReloadFlashLight");
+            }
+               
 
         }
 
@@ -158,22 +180,31 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetKeyDown(inputs.FlashLight) && !On && Usable)
         {
+            reload = false;
+            SFX_TurnOnLight.Play();
             On = true;
-            Light.SetActive(true);
+            FlashLight.enabled = (true);
         }
         else if (Input.GetKeyDown(inputs.FlashLight) && On) 
         {
+            reload = false;
+            SFX_TurnOnLight.Play();
             On = false;
-            Light.SetActive(false);
+            FlashLight.enabled = (false);
         }
     }
-    IEnumerator Piscar()
+    IEnumerator animFlashLight()
     {
-        Light.SetActive(false);
+        FlashLight.enabled = (false);
         yield return new WaitForSeconds(.2f);
-        Light.SetActive(true);
+        FlashLight.enabled = (true);
     }
- 
+    IEnumerator TimeToReloadFlashLight()
+    {
+        yield return new WaitForSeconds(1f);
+        reload = true;
+    }
+    #endregion;
 
     private void UpdateBar(Image bar,float min,float max)
     {
@@ -188,5 +219,12 @@ public class PlayerController : MonoBehaviour
         anim.Play(newState);
 
         currentState = newState;
+    }
+
+    public void SFXWalking()
+    {
+        int rd = Random.Range(0, SFX_Walking.Length);
+
+        SFX_Walking[rd].Play();
     }
 }
